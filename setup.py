@@ -42,7 +42,7 @@ setup(
     ],
     entry_points={
         'pytest11': [
-            'pytest-single_file_logging = pytest-single_file_logging:plugin',
+            'pytest-single_file_logging = plugin',
         ],
     },
 )
