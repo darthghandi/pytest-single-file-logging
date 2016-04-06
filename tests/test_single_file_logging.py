@@ -31,7 +31,7 @@
 #     )
 #     # fnmatch_lines does an assertion internally
 #     result.stdout.fnmatch_lines([
-#         'pytest_single_file_logging:',
+#         'pytest-single_file_logging:',
 #     ])
 
 

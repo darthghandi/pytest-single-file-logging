@@ -14,7 +14,7 @@ class SingleFileLogging(object):
 
 
 def pytest_addoption(parser):
-    group = parser.getgroup('pytest_single_file_logging')
+    group = parser.getgroup('pytest-single_file_logging')
     group.addoption(
         '--logconfig',
         action='store',

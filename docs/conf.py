@@ -48,7 +48,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'pytest-pytest_single_file_logging'
+project = u'pytest-pytest-single_file_logging'
 copyright = u'2015, Chris Saxey'
 author = u'Chris Saxey'
 
@@ -254,7 +254,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'pytest-cookiecutterplugin_name', u'pytest-pytest_single_file_logging Documentation',
+    (master_doc, 'pytest-cookiecutterplugin_name', u'pytest-pytest-single_file_logging Documentation',
      [author], 1)
 ]
 
@@ -268,7 +268,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'pytest-cookiecutterplugin_name', u'pytest-pytest_single_file_logging Documentation',
+  (master_doc, 'pytest-cookiecutterplugin_name', u'pytest-pytest-single_file_logging Documentation',
    author, 'pytest-cookiecutterplugin_name', 'One line description of project.',
    'Miscellaneous'),
 ]
