@@ -1,13 +1,9 @@
 pytest-single_file_logging
 ==========================
 
-.. image:: https://travis-ci.org/darthghandi/pytest-single_file_logging.svg?branch=master
-    :target: https://travis-ci.org/darthghandi/pytest-single_file_logging
-    :alt: See Build Status on Travis CI
-
-.. image:: https://ci.appveyor.com/api/projects/status/github/darthghandi/pytest-single_file_logging?branch=master
-    :target: https://ci.appveyor.com/project/darthghandi/pytest-single_file_logging/branch/master
-    :alt: See Build Status on AppVeyor
+.. image:: https://travis-ci.org/darthghandi/pytest-single-file-logging.svg?branch=master
+    :target: https://travis-ci.org/darthghandi/pytest-single-file-logging
+    :alt: See Build Status on travis-ci
 
 Allow for multiple processes to log to a single file
 
