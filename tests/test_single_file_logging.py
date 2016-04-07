@@ -25,14 +25,14 @@
 #     assert result.ret == 0
 
 
-# def test_help_message(testdir):
-#     result = testdir.runpytest(
-#         '--help',
-#     )
-#     # fnmatch_lines does an assertion internally
-#     result.stdout.fnmatch_lines([
-#         'pytest-single_file_logging:',
-#     ])
+def test_help_message(testdir):
+    result = testdir.runpytest(
+        '--help',
+    )
+    # fnmatch_lines does an assertion internally
+    result.stdout.fnmatch_lines([
+        'pytest-single_file_logging:',
+    ])
 
 
 # def test_hello_ini_setting(testdir):
@@ -63,19 +63,19 @@
 #     assert result.ret == 0
 
 
-def test_log_to_file(testdir):
-    testdir.makepyfile("""
-        def test_info_log(logger):
-            logger.info('Hello!')
-            assert True
-
-        def test_error_log(logger):
-            logger.info('Hello!')
-            assert True
-    """)
-
-    result = testdir.runpytest(
-        # '-n 2',
-        '--logconfig "/Users/railesax/dev/pytest-single_file_logging/tests/log.config"'
-    )
-    print(result)
+# def test_log_to_file(testdir):
+#     testdir.makepyfile("""
+#         def test_info_log(logger):
+#             logger.info('Hello!')
+#             assert True
+#
+#         def test_error_log(logger):
+#             logger.info('Hello!')
+#             assert True
+#     """)
+#
+#     result = testdir.runpytest(
+#         # '-n 2',
+#         '--logconfig "/Users/railesax/dev/pytest-single_file_logging/tests/log.config"'
+#     )
+#     print(result)

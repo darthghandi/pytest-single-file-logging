@@ -13,7 +13,7 @@ def read(fname):
 
 setup(
     name='pytest-single_file_logging',
-    version='0.1.6',
+    version='0.1.7',
     author='Chris Saxey',
     author_email='railesax@adobe.com',
     maintainer='Chris Saxey',

@@ -34,8 +34,7 @@ def pytest_configure(config):
         file_name = config.getoption("log_config")
         p = Process(target=start_server, args=(file_name,))
         p.start()
-        p.join()
-
+        # TODO: may need to wait until sever is confirmed to be listening
         socket_logger = logging.getLogger(__name__)
         socket_handler = SocketHandler('localhost', DEFAULT_TCP_LOGGING_PORT)
         socket_logger.addHandler(socket_handler)

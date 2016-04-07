@@ -15,13 +15,15 @@ This `Pytest`_ plugin was generated with `Cookiecutter`_ along with `@hackebrot`
 Features
 --------
 
-* TODO
+* Allows all workers created by xdist to log to the same configuration
 
 
 Requirements
 ------------
 
-* TODO
+* Pytest
+* gevent 1.1+
+* xdist
 
 
 Installation
