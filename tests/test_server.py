@@ -18,8 +18,9 @@ def log(num):
     root_logger.error('I have gas')
 
 
-with Pool(processes=200) as pool:
-    pool.map(log, range(1, 300))
+def test_multiple_connections():
+    with Pool(processes=200) as pool:
+        pool.map(log, range(1, 300))
 
 # Now, define a couple of other loggers which might represent areas in your
 # application:
@@ -35,8 +36,8 @@ with Pool(processes=200) as pool:
 # logger3.critical('I have bad gas')
 
 # try closing socket with 4 bytes of 0's
-end = bytes.fromhex('0000 0000')
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(('localhost', default_port))
-s.send(end)
-s.close()
+# end = bytes.fromhex('0000 0000')
+# s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# s.connect(('localhost', default_port))
+# s.send(end)
+# s.close()

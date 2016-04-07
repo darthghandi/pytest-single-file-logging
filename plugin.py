@@ -1,18 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import logging
+import pytest
 from logging.handlers import SocketHandler, DEFAULT_TCP_LOGGING_PORT
 from multiprocessing import Process
-
-import pytest
-
-from log_socket_receiver import start_server, configure_client_logger, stop_server
-
-
-class SingleFileLogging(object):
-    """
-
-    """
+from log_server import start_server, configure_client_logger, stop_server
 
 
 def pytest_addoption(parser):

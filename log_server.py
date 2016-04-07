@@ -12,7 +12,7 @@ DEFAULT_LOG_LEVEL = logging.INFO
 DEFAULT_CONFIG_FILE = 'testing.log'
 
 
-class LogSocketReceiver(StreamServer):
+class LogServer(StreamServer):
     def __init__(self, listener, handle=None, backlog=None, spawn='default', file_name='log.config', **ssl_args):
         self.log_info = self._get_log_info(file_name)
         self.logger = self.configure_logging()
@@ -57,16 +57,20 @@ class LogSocketReceiver(StreamServer):
 
 
 def start_server(file_name):
-    server = LogSocketReceiver(('127.0.0.1', DEFAULT_TCP_LOGGING_PORT), file_name=file_name)
+    server = LogServer(('127.0.0.1', DEFAULT_TCP_LOGGING_PORT), file_name=file_name)
     server.serve_forever()
 
 
 def stop_server():
     end = bytes.fromhex('0000 0000')
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect(('localhost', DEFAULT_TCP_LOGGING_PORT))
-    s.send(end)
-    s.close()
+    try:
+        s.connect(('localhost', DEFAULT_TCP_LOGGING_PORT))
+        s.send(end)
+        s.close()
+    except ConnectionRefusedError:
+        # looks like the server is already stopped.
+        pass
 
 
 def configure_client_logger(server_ip, logger_name):
