@@ -13,7 +13,7 @@ def read(fname):
 
 setup(
     name='pytest-single_file_logging',
-    version='0.1.0',
+    version='0.1.1',
     author='Chris Saxey',
     author_email='railesax@adobe.com',
     maintainer='Chris Saxey',
@@ -22,7 +22,7 @@ setup(
     url='https://github.com/darthghandi/pytest-single_file_logging',
     description='Allow for multiple processes to log to a single file',
     long_description=read('README.rst'),
-    packages=['pytest-single_file_logging'],
+    packages=['pytest_single_file_logging'],
     install_requires=['pytest>=2.8.1', 'gevent>=1.1.0'],
     classifiers=[
         'Development Status :: 4 - Beta',
@@ -42,7 +42,7 @@ setup(
     ],
     entry_points={
         'pytest11': [
-            'pytest-single_file_logging = plugin',
+            'pytest-single_file_logging = pytest_single_file_logging:plugin',
         ],
     },
 )
