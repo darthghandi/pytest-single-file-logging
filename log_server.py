@@ -77,6 +77,7 @@ def configure_client_logger(server_ip, logger_name):
     socket_logger = logging.getLogger(logger_name)
     socket_handler = SocketHandler(server_ip, DEFAULT_TCP_LOGGING_PORT)
     socket_logger.addHandler(socket_handler)
+    return socket_logger
 
 
 if __name__ == '__main__':
