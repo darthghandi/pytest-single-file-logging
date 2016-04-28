@@ -47,6 +47,7 @@ def pytest_unconfigure(config):
         stop_server()
 
 
+# def pytest_testnodeready(node):
 def pytest_configure_node(node):
     ip = node.config.getoption('server_ip')
     node_id = node.slaveinput['slaveid']
