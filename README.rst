@@ -5,6 +5,10 @@ pytest-single_file_logging
     :target: https://travis-ci.org/darthghandi/pytest-single-file-logging
     :alt: See Build Status on travis-ci
 
+.. image:: https://img.shields.io/pypi/v/nine.svg?maxAge=2592000
+    :target: https://pypi.python.org/pypi/pytest-single-file-logging
+    :alt: Latest PyPi build
+
 Allow for multiple processes to log to a single file
 
 ----
@@ -37,7 +41,15 @@ You can install "pytest-single_file_logging" via `pip`_ from `PyPI`_::
 Usage
 -----
 
-* TODO
+A pytest fixture `logger` is provided by this plugin. Using the fixture is easy::
+
+    def test_warning_log(logger):
+    logger.warning('this is your last warning!')
+
+
+The standard library logging library is used with the logging configuration
+pulled from the `--logconfig` option. The supported format for the configuration
+file is json and dictconfig. Documentation of dictconfig is located `here`_
 
 Contributing
 ------------
@@ -67,3 +79,4 @@ If you encounter any problems, please `file an issue`_ along with a detailed des
 .. _`tox`: https://tox.readthedocs.org/en/latest/
 .. _`pip`: https://pypi.python.org/pypi/pip/
 .. _`PyPI`: https://pypi.python.org/pypi
+.. _`here`: https://docs.python.org/3.5/library/logging.config.html#logging-config-dictschema
