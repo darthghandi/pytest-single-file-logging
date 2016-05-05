@@ -62,25 +62,46 @@ def test_help_message(testdir):
 #     # make sure that that we get a '0' exit code for the testsuite
 #     assert result.ret == 0
 
-
-def test_log_to_file(testdir):
-    testdir.makepyfile("""
-        def test_info_log(logger):
-            logger.info('Hello!')
-            assert True
-
-        def test_error_log(logger):
-            logger.info('Goodbye!')
-            assert True
-    """)
-
-    result = testdir.runpytest(
-        '-n 2',
-        '--logconfig "/Users/railesax/dev/pytest-single_file_logging/tests/log.config"'
-    )
-    log_file = 't.log'
-    with open(log_file) as f:
-        contents = f.read()
-    assert 'Hello!' in contents
-    assert 'Goodbye!' in contents
-    print(result)
+# TODO: need to figure out how to make this work
+# def test_log_to_file(testdir):
+#     testdir.makepyfile("""
+#         def test_info_log(logger):
+#             logger.info('Hello!')
+#             assert True
+#
+#         def test_error_log(logger):
+#             logger.info('Goodbye!')
+#             assert True
+#     """)
+#     config = '''{
+#     "version": 1,
+#     "formatters": {
+#         "default": {"format": "%(asctime)s %(name)s %(levelname)s: %(message)s", "datefmt": "%Y-%m-%d %H:%M:%S"}
+#     },
+#     "handlers": {
+#         "file": {
+#             "level": "DEBUG",
+#             "class": "logging.handlers.RotatingFileHandler",
+#             "formatter": "default",
+#             "filename": "t.log",
+#             "maxBytes": 10485760,
+#             "mode": "a",
+#             "backupCount": 5
+#         }
+#     },
+#     "loggers": {
+#         "": {
+#             "level": "DEBUG",
+#             "handlers": ["file"]
+#         }
+#     },
+#     "disable_existing_loggers": true
+# }'''
+#     testdir.makefile('.config', log=config)
+#
+#     result = testdir.runpytest(
+#         '-n 2',
+#         '--logconfig "log.config"'
+#     )
+#
+#     print(result)

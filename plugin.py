@@ -15,7 +15,7 @@ def pytest_addoption(parser):
         dest='log_config',
         default='log.config',
         help='Set the logging as specified for dictconfig.'
-             'https://docs.python.org/3.5/library/logging.config.html#logging-config-dictschema'
+             ' See https://docs.python.org/3.5/library/logging.config.html#logging-config-dictschema for details'
     )
     group.addoption(
         '--serverip',
@@ -28,7 +28,13 @@ def pytest_addoption(parser):
 
 @pytest.mark.tryfirst
 def pytest_configure(config):
-    if not hasattr(config, 'slaveinput'):
+    from time import sleep
+    if hasattr(config, 'slaveinput'):
+        ip = config.getoption('server_ip')
+        node_id = config.slaveinput['slaveid']
+        l = configure_client_logger(ip, '')
+        l.info('Finished configuring logger for {}'.format(node_id))
+    else:
         # need xdist for this to work, but not sure if I need this line since I don't want to defer any hooks
         # config.pluginmanager.getplugin('xdist')
         file_name = config.getoption('log_config')
@@ -47,28 +53,20 @@ def pytest_unconfigure(config):
         stop_server()
 
 
-# def pytest_testnodeready(node):
-def pytest_configure_node(node):
-    ip = node.config.getoption('server_ip')
-    node_id = node.slaveinput['slaveid']
-    l = configure_client_logger(ip, '')
-    l.info('Finished configuring logger for {}'.format(node_id))
-
-
 # def pytest_report_teststatus(report):
 #     l = logging.getLogger(__name__)
 #     l.info('Test ')
 #     pass
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture
 def logger(request):
     """
     Lets each test have access to a logger with the name of the worker
     """
-    # si = getattr(request.config, "slaveinput", None)
-    # if si:
-    #     log = logging.getLogger(si['slaveid'])
-    # else:
-    log = logging.getLogger()
+    si = getattr(request.config, "slaveinput", None)
+    if si:
+        log = logging.getLogger(si['slaveid'])
+    else:
+        log = logging.getLogger()
     return log
